@@ -6,8 +6,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('My API')
-    .setDescription('API description')
+    .setTitle('Booking Platform REST API')
+    .setDescription(
+      'Booking Platform REST API alows users to manage services and customer bookings',
+    )
     .setVersion('1.0')
     .build();
 

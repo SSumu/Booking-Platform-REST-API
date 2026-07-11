@@ -20,7 +20,7 @@ const postgresOptions: DataSourceOptions = {
   host: process.env.DB_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT || '5432', 10),
   username: process.env.DB_USERNAME || 'postgres',
-  password: process.env.DB_PASSWORD || 'postgres',
+  password: process.env.DB_PASSWORD || 'root',
   database: process.env.DB_NAME || 'booking_platform',
   entities: [User, Service, Booking],
   migrations: ['dist/database/migrations/*.js'],
