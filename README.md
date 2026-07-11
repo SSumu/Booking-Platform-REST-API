@@ -61,15 +61,15 @@ Open `.env` and set `JWT_SECRET` / `JWT_REFRESH_SECRET` to any long random strin
 
 ## 3. Environment Variables
 
-| Variable | Description | Default |
-|---|---|---|
-| `PORT` | HTTP port the API listens on | `3000` |
-| `DB_TYPE` | `postgres` (preferred) or `sqlite` | `postgres` |
+| Variable                                                          | Description                                                | Default            |
+| ----------------------------------------------------------------- | ---------------------------------------------------------- | ------------------ |
+| `PORT`                                                            | HTTP port the API listens on                               | `3000`             |
+| `DB_TYPE`                                                         | `postgres` (preferred) or `sqlite`                         | `postgres`         |
 | `DB_HOST` / `DB_PORT` / `DB_USERNAME` / `DB_PASSWORD` / `DB_NAME` | Postgres connection details (used when `DB_TYPE=postgres`) | see `.env.example` |
-| `SQLITE_DB_PATH` | Path to the SQLite file (used when `DB_TYPE=sqlite`) | `database.sqlite` |
-| `DB_LOGGING` | Log SQL queries to the console | `false` |
-| `JWT_SECRET` / `JWT_EXPIRES_IN` | Access token secret + lifetime | — / `15m` |
-| `JWT_REFRESH_SECRET` / `JWT_REFRESH_EXPIRES_IN` | Refresh token secret + lifetime | — / `7d` |
+| `SQLITE_DB_PATH`                                                  | Path to the SQLite file (used when `DB_TYPE=sqlite`)       | `database.sqlite`  |
+| `DB_LOGGING`                                                      | Log SQL queries to the console                             | `false`            |
+| `JWT_SECRET` / `JWT_EXPIRES_IN`                                   | Access token secret + lifetime                             | — / `15m`          |
+| `JWT_REFRESH_SECRET` / `JWT_REFRESH_EXPIRES_IN`                   | Refresh token secret + lifetime                            | — / `7d`           |
 
 ## 4. Database Setup
 
@@ -166,22 +166,22 @@ Two forms are provided, per the assignment's "choose one" — both are included:
 
 ### Endpoint Summary
 
-| Method | Path | Auth required | Description |
-|---|---|---|---|
-| POST | `/auth/register` | No | Register a new user |
-| POST | `/auth/login` | No | Log in, returns access + refresh token |
-| POST | `/auth/refresh` | No (needs valid refresh token) | Exchange refresh token for a new pair |
-| POST | `/auth/logout` | Yes | Invalidate the stored refresh token |
-| POST | `/services` | Yes | Create a service |
-| GET | `/services` | Yes | List services (paginated) |
-| GET | `/services/:id` | Yes | Get a service by id |
-| PATCH | `/services/:id` | Yes | Update a service |
-| DELETE | `/services/:id` | Yes | Delete a service |
-| POST | `/bookings` | **No** | Create a booking |
-| GET | `/bookings` | Yes | List bookings (paginated, filter by `status`, `search`) |
-| GET | `/bookings/:id` | Yes | Get a booking by id |
-| PATCH | `/bookings/:id/status` | Yes | Update booking status |
-| DELETE | `/bookings/:id` | Yes | Cancel a booking |
+| Method | Path                   | Auth required                  | Description                                             |
+| ------ | ---------------------- | ------------------------------ | ------------------------------------------------------- |
+| POST   | `/auth/register`       | No                             | Register a new user                                     |
+| POST   | `/auth/login`          | No                             | Log in, returns access + refresh token                  |
+| POST   | `/auth/refresh`        | No (needs valid refresh token) | Exchange refresh token for a new pair                   |
+| POST   | `/auth/logout`         | Yes                            | Invalidate the stored refresh token                     |
+| POST   | `/services`            | Yes                            | Create a service                                        |
+| GET    | `/services`            | Yes                            | List services (paginated)                               |
+| GET    | `/services/:id`        | Yes                            | Get a service by id                                     |
+| PATCH  | `/services/:id`        | Yes                            | Update a service                                        |
+| DELETE | `/services/:id`        | Yes                            | Delete a service                                        |
+| POST   | `/bookings`            | **No**                         | Create a booking                                        |
+| GET    | `/bookings`            | Yes                            | List bookings (paginated, filter by `status`, `search`) |
+| GET    | `/bookings/:id`        | Yes                            | Get a booking by id                                     |
+| PATCH  | `/bookings/:id/status` | Yes                            | Update booking status                                   |
+| DELETE | `/bookings/:id`        | Yes                            | Cancel a booking                                        |
 
 ## 9. Assumptions Made
 
@@ -189,7 +189,7 @@ Two forms are provided, per the assignment's "choose one" — both are included:
   customers can create bookings without logging in, but doesn't say who can view/manage them.
   Treating "list/view/update-status/cancel" as staff-only actions (same guard as Services) felt
   like the safer, more realistic interpretation for a booking platform — customers shouldn't be
-  able to list *all* bookings anonymously.
+  able to list _all_ bookings anonymously.
 - **Status transitions**: besides "cancelled can't become completed", I added a general
   transition rule so the state machine is consistent: `PENDING → CONFIRMED/CANCELLED`,
   `CONFIRMED → COMPLETED/CANCELLED`, and both `CANCELLED` and `COMPLETED` are terminal (can't be
