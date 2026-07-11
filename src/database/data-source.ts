@@ -16,6 +16,6 @@ const cliDataSourceOptions: DataSourceOptions = {
   migrations: ['src/database/migrations/*.ts'],
 }; /*as DataSourceOptions*/
 
-export const AppDataSource = new DataSource(cliDataSourceOptions);
+const AppDataSource = new DataSource(cliDataSourceOptions);
 
 export default AppDataSource;
